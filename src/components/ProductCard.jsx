@@ -32,7 +32,7 @@ export default function ProductCard(props) {
       };
       dispatch(setProduct(product))
     }else{
-      dispatch(removeProduct())
+      dispatch(removeProduct(data.id));
       dispatch(decrementCart());
     }
   };

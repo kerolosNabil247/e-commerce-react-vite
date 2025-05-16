@@ -26,7 +26,6 @@ export default function CartCard(props) {
 
   const handlePlus = () => {
     setQuantity((prev) => prev + 1);
-    // onIncrement(id)
   };
 
   const handleDecrement = () => {
@@ -58,7 +57,6 @@ export default function CartCard(props) {
             <div
               className="col-4 btn btn-success"
               onClick={handlePlus}
-              //   onClick={() => dispatch(incrementByOne())}
             >
               +
             </div>
