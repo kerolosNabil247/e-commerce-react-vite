@@ -1,18 +1,40 @@
 import React, { useState } from "react";
 import { Link } from "react-router";
 import Rating from "./Rating";
+import { useDispatch } from "react-redux";
+import { setProduct } from "../store/slices/addedProduct";
+import { decrementCart, incrementCart } from "../store/slices/cartCount";
+import { removeProduct } from "../store/slices/addedProduct.js";
 
 export default function ProductCard(props) {
   const { data } = props;
   const [isAdded, setIsAdded] = useState(false);
+
   let number = data.price;
   let numberString = number.toString();
   let parts = numberString.split(".");
   let integer = parseInt(parts[0]);
   let float = parseInt(parts[1]);
 
+  const dispatch = useDispatch();
+
   const handleClick = () => {
     setIsAdded(!isAdded);
+    if(!isAdded){
+      dispatch(incrementCart());
+      console.log(data.title);
+      const product = {
+        title: data.title,
+        image: data.images[0],
+        price: data.price,
+        brand: data.brand,
+        id: data.id,
+      };
+      dispatch(setProduct(product))
+    }else{
+      dispatch(removeProduct())
+      dispatch(decrementCart());
+    }
   };
   return (
     <>

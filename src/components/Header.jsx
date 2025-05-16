@@ -1,7 +1,9 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router";
-
 export default function Header() {
+  const cartVal = useSelector((state) => state.cartCount.cartCount)
+
   return (
     <>
       <nav className="navbar navbar-expand-lg justify-content-between jus bg-body-tertiary ">
@@ -33,8 +35,8 @@ export default function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
-                  <i className="bi bi-cart-fill"></i>
+                <Link className="nav-link" to="/cart">
+                  <i className="bi bi-cart-fill"></i>{ cartVal > 0 && <sup>{cartVal}</sup>}
                 </Link>
               </li>
             </ul>
