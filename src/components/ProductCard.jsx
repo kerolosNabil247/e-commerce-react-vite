@@ -20,7 +20,11 @@ export default function ProductCard(props) {
 
   const handleClick = () => {
     setIsAdded(!isAdded);
-    if(!isAdded){
+    if(data.availabilityStatus == 'Out of Stock'){
+      console.log('out of stock');
+      alert('This item is out of stock');
+      setIsAdded(false)
+    }else if(!isAdded && (data.availabilityStatus != 'Out of Stock')){
       dispatch(incrementCart());
       console.log(data.title);
       const product = {

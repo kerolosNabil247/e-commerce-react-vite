@@ -4,6 +4,8 @@ import Header from "./components/Header";
 import ProductList from "./pages/ProductList";
 import ProductDetails from "./pages/ProductDetails";
 import Cart from "./pages/Cart";
+import Register from "./pages/Register"
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
             <Route path="/" element={<ProductList></ProductList>}></Route>
             <Route path="/product-details/:id" element={<ProductDetails></ProductDetails>}></Route>
             <Route path="/cart" element={<Cart></Cart>}></Route>
+            <Route path="/register" element={<Register></Register>}></Route>
+            <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>
         </div>
       </BrowserRouter>
