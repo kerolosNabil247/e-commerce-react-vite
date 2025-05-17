@@ -77,6 +77,7 @@ export default function Register() {
               required
               value={name}
               onChange={handleName}
+              autoComplete="off"
             />
           </div>
         </div>
@@ -102,6 +103,7 @@ export default function Register() {
             required
             value={email}
             onChange={handleEmail}
+            autoComplete="off"
           />
         </div>
         {notvalidEmail && email.length != 0 && (
@@ -127,6 +129,7 @@ export default function Register() {
               value={username}
               onChange={handleUsername}
               required
+              autoComplete="off"
             />
           </div>
         </div>
@@ -149,6 +152,7 @@ export default function Register() {
           aria-describedby="passwordHelpBlock"
           value={password}
           onChange={handlePassword}
+          autoComplete="off"
         />
         {(invalidPass && password.length !=0) && (
           <div id="passwordHelpBlock" className="form-text">
@@ -170,6 +174,7 @@ export default function Register() {
           aria-describedby="passwordHelpBlock"
           value={confirmPass}
           onChange={handleConfirmPass}
+          autoComplete="off"
         />
         {(notConfirmed && confirmPass.length != 0) && <div>
             The passwords do not match!
