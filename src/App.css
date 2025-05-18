@@ -1,7 +1,21 @@
 .custom-card-animation{
-    transition: all;
+    transition:transform 0.3s ease-in-out;
 }
 
 .custom-card-animation:hover {
-    transform: translate(-5px,-5px);
+    transform: scale(1.04) translate(-5px,-5px);
+}
+
+.custom-nav-animation{
+    transition: transform 0.3s ease-in-out;
+}
+.custom-nav-animation:hover{
+    transform:  translate(3px,-3px);
+}
+
+.custom-dropDown{
+    transition: transform 0.3s ease-in-out;
+}
+.custom-dropDown:hover{
+    transform: translate(3px,3px);
 }

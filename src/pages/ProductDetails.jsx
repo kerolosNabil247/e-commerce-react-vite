@@ -19,11 +19,11 @@ export default function ProductDetails() {
       .catch((err) => console.log(err));
   }, [params.id]);
   console.log(product);
-  
+
   return (
     <div className="row justify-content-center" style={{marginTop:'4rem'}}>
       <div className="col-sm-12 col-md-5 my-3 h-100">
-        <div className="card bg-light w-100" style={{ width: "18rem" }}>
+        <div data-aos="zoom-in" data-aos-delay="500" className="card bg-light w-100" style={{ width: "18rem" }}>
           <img src={product?.images[0]} className="card-img-top" alt="..." />
         </div>
       </div>

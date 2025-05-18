@@ -51,8 +51,8 @@ export default function ProductCard(props) {
 
   return (
     <>
-      <div className="card h-100 custom-card-animation" style={{ width: "18rem" }}>
-        <p
+      <div className="card h-100 custom-card-animation" data-aos="zoom-in" data-aos-delay="300"  data-aos-duration="500" style={{ width: "18rem" }}>
+        <p 
           className={
             "m-4 rounded-5 w-50 text-center text-white " +
             (data.availabilityStatus === "In Stock"

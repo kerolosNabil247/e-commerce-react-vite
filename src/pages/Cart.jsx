@@ -10,7 +10,7 @@ export default function Cart() {
     // console.log(products.length);
     useEffect(() => {
       setCount(products.length);
-    },[products.length])
+    },[products.length,setCount])
     
 
     const dispatch = useDispatch();

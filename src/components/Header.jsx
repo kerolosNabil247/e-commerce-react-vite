@@ -4,13 +4,13 @@ import { Link } from "react-router";
 import LangContext from "../context/language";
 import CountOfCartContext from "../context/countCart";
 export default function Header() {
-  
+
   const {_, setLang} = useContext(LangContext);
   const {count, __} = useContext(CountOfCartContext)
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg justify-content-between jus bg-body-tertiary fixed-top ">
+      <nav className="navbar navbar-expand-lg justify-content-between jus bg-body-tertiary fixed-top opacity-75">
         <div className="container-fluid justify-content-end">
           <button
             className="navbar-toggler"
@@ -29,17 +29,17 @@ export default function Header() {
             </Link>
             <ul className="navbar-nav  mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
+                <Link className="nav-link custom-nav-animation" to="/register">
                   Register
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="#">
+                <Link className="nav-link custom-nav-animation" to="#">
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/cart">
+                <Link className="nav-link custom-nav-animation" to="/cart">
                   <i className="bi bi-cart-fill"></i>
                   {(count > 0)&& <sup>{count}</sup>}
                 </Link>
@@ -58,12 +58,12 @@ export default function Header() {
                   </div>
                   <ul className="dropdown-menu">
                     <li>
-                      <div className="dropdown-item" onClick={() => setLang('ltr')} role="button">
+                      <div className="dropdown-item custom-dropDown" onClick={() => setLang('ltr')} role="button">
                         English
                       </div>
                     </li>
                     <li>
-                      <div className="dropdown-item" onClick={() => setLang('rtl')} role="button">
+                      <div className="dropdown-item custom-dropDown" onClick={() => setLang('rtl')} role="button">
                         Arabic
                       </div>
                     </li>
