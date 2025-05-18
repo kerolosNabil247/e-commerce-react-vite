@@ -1,12 +1,16 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useContext} from "react";
+// import { useSelector } from "react-redux";
 import { Link } from "react-router";
+import LangContext from "../context/language";
+import CountOfCartContext from "../context/countCart";
 export default function Header() {
-  const cartVal = useSelector((state) => state.cartCount.cartCount)
+  
+  const {_, setLang} = useContext(LangContext);
+  const {count, __} = useContext(CountOfCartContext)
 
   return (
     <>
-      <nav className="navbar navbar-expand-lg justify-content-between jus bg-body-tertiary ">
+      <nav className="navbar navbar-expand-lg justify-content-between jus bg-body-tertiary fixed-top ">
         <div className="container-fluid justify-content-end">
           <button
             className="navbar-toggler"
@@ -25,7 +29,7 @@ export default function Header() {
             </Link>
             <ul className="navbar-nav  mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" to="/register">
+                <Link className="nav-link" to="/register">
                   Register
                 </Link>
               </li>
@@ -36,8 +40,35 @@ export default function Header() {
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/cart">
-                  <i className="bi bi-cart-fill"></i>{ cartVal > 0 && <sup>{cartVal}</sup>}
+                  <i className="bi bi-cart-fill"></i>
+                  {(count > 0)&& <sup>{count}</sup>}
                 </Link>
+              </li>
+
+              {/* drop down */}
+              <li className="nav-item">
+                <div className="dropdown">
+                  <div
+                    className="btn dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Languages
+                  </div>
+                  <ul className="dropdown-menu">
+                    <li>
+                      <div className="dropdown-item" onClick={() => setLang('ltr')} role="button">
+                        English
+                      </div>
+                    </li>
+                    <li>
+                      <div className="dropdown-item" onClick={() => setLang('rtl')} role="button">
+                        Arabic
+                      </div>
+                    </li>
+                  </ul>
+                </div>
               </li>
             </ul>
           </div>

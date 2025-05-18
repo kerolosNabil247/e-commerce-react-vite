@@ -1,11 +1,18 @@
 import {  useDispatch, useSelector } from 'react-redux';
 import CartCard from '../components/CartCard'
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { decrementCart } from '../store/slices/cartCount';
+import CountOfCartContext from '../context/countCart';
 
 export default function Cart() {
     const [products, setProducts] = useState(useSelector(state => state.addedProduct.products));
+    const {_,setCount} = useContext(CountOfCartContext);
+    // console.log(products.length);
+    useEffect(() => {
+      setCount(products.length);
+    },[products.length])
     
+
     const dispatch = useDispatch();
 
     const handleDelete = (id) => {
@@ -17,8 +24,8 @@ export default function Cart() {
     }
 
   return (
-    <div className=''>
-      <h2>Cart</h2>
+    <div  style={{marginTop:'4rem'}}>
+      <h2 className='mt-5'>Cart</h2>
       <div className="row">
         <p className='col-5'>Description</p>
         <p className='col-3'>Quantity</p>
@@ -34,6 +41,7 @@ export default function Cart() {
                 image={product.image}
                 price={product.price}
                 brand={product.brand}
+                rate={product.rate}
                 id={product.id}
                 onDelete={handleDelete}
                 

@@ -58,8 +58,8 @@ export default function Register() {
   return (
     <div>
       {/* name */}
-      <div className="row">
-        <div className="row">
+      <div className="row " style={{marginTop:'4rem'}}>
+        <div className="row  mb-3">
           <div className="">
             <label htmlFor="name" className="form-label">
               <span className="text-danger">*</span>Name
@@ -88,30 +88,7 @@ export default function Register() {
         )}
       </div>
 
-      {/* email address */}
-      <div className="row">
-        <div className="row">
-          <div className="mb-2"></div>
-          <label htmlFor="exampleFormControlInput1" className="form-label">
-            <span className="text-danger">*</span>Email address
-          </label>
-          <input
-            type="email"
-            className="form-control mb-2"
-            id="exampleFormControlInput1"
-            placeholder="name@example.com"
-            required
-            value={email}
-            onChange={handleEmail}
-            autoComplete="off"
-          />
-        </div>
-        {notvalidEmail && email.length != 0 && (
-          <div className="row">
-            <p className="text-danger">Please enter a valid email address</p>
-          </div>
-        )}
-      </div>
+      
 
       {/* user name */}
       <div className="row">
@@ -136,6 +113,30 @@ export default function Register() {
         {usernameSpace && (
           <div className="row">
             <p className="text-danger">User Name must have no spaces</p>
+          </div>
+        )}
+      </div>
+
+      {/* email address */}
+      <div className="row">
+        <div className="row">
+          <label htmlFor="exampleFormControlInput1" className="form-label">
+            <span className="text-danger">*</span>Email address
+          </label>
+          <input
+            type="email"
+            className="form-control mb-2 "
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+            required
+            value={email}
+            onChange={handleEmail}
+            autoComplete="off"
+          />
+        </div>
+        {notvalidEmail && email.length != 0 && (
+          <div className="row">
+            <p className="text-danger">Please enter a valid email address</p>
           </div>
         )}
       </div>

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../store/slices/addedProduct";
 import { decrementCart, incrementCart } from "../store/slices/cartCount";
 import { removeProduct } from "../store/slices/addedProduct.js";
+import CountOfCartContext from "../context/countCart.js";
 
 export default function ProductCard(props) {
   const { data } = props;
   const [isAdded, setIsAdded] = useState(false);
+
+  const {_, setCount} = useContext(CountOfCartContext);
+  
 
   let number = data.price;
   let numberString = number.toString();
@@ -32,17 +36,22 @@ export default function ProductCard(props) {
         image: data.images[0],
         price: data.price,
         brand: data.brand,
+        rate: data.rating,
         id: data.id,
       };
-      dispatch(setProduct(product))
+      dispatch(setProduct(product));
+      setCount(prev => prev+1)
     }else{
       dispatch(removeProduct(data.id));
       dispatch(decrementCart());
-    }
+      setCount(prev => prev-1)
+    };
+    
   };
+
   return (
     <>
-      <div className="card h-100" style={{ width: "18rem" }}>
+      <div className="card h-100 custom-card-animation" style={{ width: "18rem" }}>
         <p
           className={
             "m-4 rounded-5 w-50 text-center text-white " +
@@ -67,7 +76,7 @@ export default function ProductCard(props) {
               </b>
             </p>
           </div>
-          <p className="card-text" style={{display: '-webkit-box', WebkitLineClamp: 2, textOverflow:'ellipsis'}}>{data.description}</p>
+          <small className="card-text">{data.description}</small>
           <Rating rate={data.rating}></Rating>
           <button
             onClick={handleClick}

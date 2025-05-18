@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { removeProduct } from "../store/slices/addedProduct";
+import { Link } from "react-router";
+import Rating from "./Rating";
 
 export default function CartCard(props) {
   const [quantity, setQuantity] = useState(1);
 
-  const { title, image, price, brand, id, onDelete } = props;
-
+  const { title, image, price, brand,rate, id, onDelete } = props;
+  console.log(rate)
   const dispatch = useDispatch();
 
   const products = useSelector((state) => state.addedProduct.products)
@@ -44,9 +46,12 @@ export default function CartCard(props) {
               <img src={image} className="card-img h-100" alt="..." />
             </div>
             <div className="col-7">
+              <Link className="text-decoration-none text-dark" to={`/product-details/${id}`}>
               <p>
                 <b>{title}</b>
               </p>
+              </Link>
+              <Rating rate={rate}></Rating>
               <p>product brand: {brand}</p>
             </div>
           </div>
@@ -64,7 +69,7 @@ export default function CartCard(props) {
               {quantity}
             </div>
             <div
-              className="col-4 btn btn-light bg-secondary-subtle border-light"
+              className="col-4 btn btn-light  border-light"
               onClick={handleDecrement}
             >
               -
