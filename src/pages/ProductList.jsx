@@ -20,7 +20,7 @@ export default function ProductList() {
   return (
     <div>
       <div className="row" style={{marginTop:'5rem'}}>
-        <h2 className="animate__animated animate__backInRight">Welcome to our shopping website, start browsing...</h2>
+        <h2 className="animate__animated animate__rubberBand">Welcome to our shopping website, start browsing...</h2>
       </div>
       {products? <div className="row justify-content-center my-5 text-center">
         {products.map((product) => (

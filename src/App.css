@@ -1,21 +1,21 @@
 .custom-card-animation{
-    transition:transform 0.3s ease-in-out;
+    transition:transform 0.3s ease-in-out !important;
 }
 
 .custom-card-animation:hover {
-    transform: scale(1.04) translate(-5px,-5px);
+    transform: scale(1.04) translate(-5px,-5px) !important;
 }
 
 .custom-nav-animation{
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out  !important;
 }
 .custom-nav-animation:hover{
-    transform:  translate(3px,-3px);
+    transform:  translate(3px,-3px) !important;
 }
 
 .custom-dropDown{
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease-in-out !important;
 }
 .custom-dropDown:hover{
-    transform: translate(3px,3px);
+    transform: translate(3px,3px) !important;
 }

@@ -42,10 +42,16 @@ export default function CartCard(props) {
         {/* description */}
         <div className="description col-5">
           <div className="row">
-            <div className="card col-5">
+            <div data-aos="fade-right"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="card col-5">
               <img src={image} className="card-img h-100" alt="..." />
             </div>
-            <div className="col-7">
+            <div data-aos="fade-right"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="col-7">
               <Link className="text-decoration-none text-dark" to={`/product-details/${id}`}>
               <p>
                 <b>{title}</b>
@@ -57,7 +63,10 @@ export default function CartCard(props) {
           </div>
         </div>
         {/* quantity */}
-        <div className="quantity col-3 me-2">
+        <div data-aos="fade-down"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="quantity col-3 me-2">
           <div className="row align-items-center">
             <div
               className="col-4 btn btn-success"
@@ -77,7 +86,10 @@ export default function CartCard(props) {
           </div>
         </div>
         {/* remove */}
-        <div className="remove col-1 mx-4 ">
+        <div data-aos="fade-left"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="remove col-1 mx-4 ">
           <div className="row">
             <div
               className="btn btn-light border border-secondary-subtle col-12"
@@ -88,7 +100,10 @@ export default function CartCard(props) {
           </div>
         </div>
         {/* price */}
-        <div className="price col-1 ">
+        <div data-aos="fade-left"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0"  className="price col-1 ">
           <div className="row align-items-center">
             <p className="col-12 mt-2">{(price * quantity).toFixed(2)}$</p>
           </div>

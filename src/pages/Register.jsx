@@ -58,7 +58,10 @@ export default function Register() {
   return (
     <div>
       {/* name */}
-      <div className="row " style={{marginTop:'4rem'}}>
+      <div data-aos="fade-down"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="row " style={{marginTop:'4rem'}}>
         <div className="row  mb-3">
           <div className="">
             <label htmlFor="name" className="form-label">
@@ -91,7 +94,10 @@ export default function Register() {
       
 
       {/* user name */}
-      <div className="row">
+      <div data-aos="fade-down"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="row">
         <div className="row">
           <div className="mb-3">
             <label htmlFor="userName" className="form-label">
@@ -118,7 +124,10 @@ export default function Register() {
       </div>
 
       {/* email address */}
-      <div className="row">
+      <div data-aos="fade-right"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="row">
         <div className="row">
           <label htmlFor="exampleFormControlInput1" className="form-label">
             <span className="text-danger">*</span>Email address
@@ -142,7 +151,10 @@ export default function Register() {
       </div>
 
       {/* password */}
-      <div className="row">
+      <div data-aos="fade-up"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="row">
         <label htmlFor="inputPassword5" className="form-label">
           <span className="text-danger">*</span>Password
         </label>
@@ -164,7 +176,10 @@ export default function Register() {
       </div>
 
       {/* confirm password */}
-      <div className="row">
+      <div data-aos="fade-up"
+              data-aos-delay="250"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="row">
         <label htmlFor="confirmPassword" className="form-label">
           <span className="text-danger">*</span>Confirm Password
         </label>
@@ -182,9 +197,16 @@ export default function Register() {
             </div>}
 
         {/* register button */}
-        <div className="row"></div>
-        <button className="btn btn-success my-4 col-3">Register</button>
       </div>
+        <div animate__animated animate__rotateIn
+        // data-aos="flip-left"
+        //       data-aos-delay="250"
+        //       data-aos-duration="1500"
+        //       data-aos-offset="0"
+               className="row">
+
+        <button className="btn btn-success my-4 col-3 animate__animated animate__rotateIn">Register</button>
+               </div>
     </div>
   );
 }

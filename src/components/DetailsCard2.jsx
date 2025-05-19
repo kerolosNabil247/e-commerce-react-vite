@@ -54,15 +54,29 @@ export default function DetailsCard2(props) {
 
   return (
     <>
-      <div data-aos="zoom-in" data-aos-delay="500" className="card border-0 w-100" style={{ width: "18rem" }}>
+      <div
+        data-aos="zoom-in"
+        data-aos-delay="500"
+        className="card border-0 w-100"
+        style={{ width: "18rem" }}
+      >
         <div className="row mx-3">
           <div className="row">
-            <h2>
+            <h2 data-aos="flip-left"
+              data-aos-delay="1000"
+              data-aos-duration="1500"
+              data-aos-offset="0">
               <b>{product?.title}</b>
             </h2>
           </div>
           <div className="row">
-            <small data-aos="fade-down" data-aos-delay="900" className="text-secondary">{product?.description}</small>
+            <small
+              data-aos="fade-down"
+              data-aos-delay="900"
+              className="text-secondary"
+            >
+              {product?.description}
+            </small>
           </div>
           <div data-aos="fade-down" data-aos-delay="900" className="row">
             {product && <Rating rate={product.rating}></Rating>}
@@ -71,8 +85,8 @@ export default function DetailsCard2(props) {
         </div>
         <hr />
         <div className="row mx-3">
-          <div className="row" data-aos="fade-down" data-aos-delay="1000">
-            <p 
+          <div className="row" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="1500">
+            <p
               className={
                 "m-4 rounded-5  text-center text-white col-4 " +
                 (product?.availabilityStatus === "In Stock"
@@ -86,28 +100,32 @@ export default function DetailsCard2(props) {
             </p>
           </div>
           <div className="row ms-1">
-            <small data-aos="fade-down" data-aos-delay="900">More information</small>
+            <small data-aos="fade-down" data-aos-delay="900">
+              More information
+            </small>
           </div>
           <div className="row ms-1">
             <button
               data-aos="fade-right"
               data-aos-delay="1000"
+              data-aos-duration="1500"
               data-aos-offset="0"
-              className="btn btn-light border-secondary col-4 m-2"
+              className="btn btn-light border-secondary col-5 m-1"
             >
               Category
             </button>
             <button
               data-aos="fade-left"
               data-aos-delay="1000"
+              data-aos-duration="1500"
               data-aos-offset="0"
-              className="btn btn-light border-secondary col-4 m-2"
+              className="btn btn-light border-secondary col-5 m-1"
             >
               Brand
             </button>
           </div>
           <div className="row ">
-            <div className="col-5 text-white">
+            <div className="col-5 text-white ms-3">
               <div
                 data-aos="flip-left"
                 data-aos-easing="ease-out-cubic"
@@ -135,29 +153,33 @@ export default function DetailsCard2(props) {
               Left! Don't miss it
             </p>
           </div>
-          <div className="row mb-3">
+          <div className="row mb-3 ms-1">
             <button
               data-aos="fade-right"
               data-aos-delay="1000"
+              data-aos-duration="1500"
               data-aos-offset="0"
               className="btn btn-success col-5 mx-1 rounded-5"
             >
               Buy Now
             </button>
-            <button
-              data-aos="fade-left"
+            <div data-aos="fade-left"
               data-aos-delay="1000"
-              data-aos-offset="0"
+              data-aos-duration="1500"
+              data-aos-offset="0" className="col-6">
+            <button 
               className={
-                "col-5 mx-1 rounded-5 " +
+                "rounded-5 btn col-12 " +
                 (isAdded
-                  ? "btn btn-secondary text-white"
-                  : "btn btn-light border-secondary")
+                  ? "btn-secondary text-white "
+                  : "btn-light border-secondary ")
               }
+              
               onClick={handleAdd}
             >
               Add to Cart
             </button>
+            </div>
           </div>
         </div>
       </div>
