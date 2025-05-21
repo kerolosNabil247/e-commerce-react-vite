@@ -124,7 +124,7 @@ export default function DetailsCard2(props) {
               Brand
             </button>
           </div>
-          <div className="row ">
+          <div className="row mt-1">
             <div className="col-5 text-white ms-3">
               <div
                 data-aos="flip-left"
@@ -149,11 +149,11 @@ export default function DetailsCard2(props) {
               </div>
             </div>
             <p data-aos="fade-down" data-aos-delay="900" className="col-6">
-              only <span className="text-warning">{product?.stock} items</span>{" "}
-              Left! Don't miss it
+              only {<span className={(product?.availabilityStatus) === 'In Stock' ? "text-success" : (product?.availabilityStatus) === 'Out of Stock'? "text-danger" : "text-warning"}>{product?.stock} items</span>}{" "}
+              Left! {(product?.availabilityStatus) !== 'Out of Stock' && <span>Don't miss it</span> } 
             </p>
           </div>
-          <div className="row mb-3 ms-1">
+          <div className="row mb-3  ms-1">
             <button
               data-aos="fade-right"
               data-aos-delay="1000"
@@ -169,7 +169,7 @@ export default function DetailsCard2(props) {
               data-aos-offset="0" className="col-6">
             <button 
               className={
-                "rounded-5 btn col-12 " +
+                "rounded-5 btn col-12  " +
                 (isAdded
                   ? "btn-secondary text-white "
                   : "btn-light border-secondary ")

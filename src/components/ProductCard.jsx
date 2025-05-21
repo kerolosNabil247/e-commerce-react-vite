@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router";
+import '../App.css'
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../store/slices/addedProduct";
@@ -10,9 +11,9 @@ import CountOfCartContext from "../context/countCart.js";
 export default function ProductCard(props) {
   const { data } = props;
   const [isAdded, setIsAdded] = useState(false);
+  const [hover, setHover] = useState(false);
 
-  const {_, setCount} = useContext(CountOfCartContext);
-  
+  const { _, setCount } = useContext(CountOfCartContext);
 
   let number = data.price;
   let numberString = number.toString();
@@ -24,11 +25,11 @@ export default function ProductCard(props) {
 
   const handleClick = () => {
     setIsAdded(!isAdded);
-    if(data.availabilityStatus == 'Out of Stock'){
-      console.log('out of stock');
-      alert('This item is out of stock');
-      setIsAdded(false)
-    }else if(!isAdded && (data.availabilityStatus != 'Out of Stock')){
+    if (data.availabilityStatus == "Out of Stock") {
+      console.log("out of stock");
+      alert("This item is out of stock");
+      setIsAdded(false);
+    } else if (!isAdded && data.availabilityStatus != "Out of Stock") {
       dispatch(incrementCart());
       console.log(data.title);
       const product = {
@@ -40,19 +41,34 @@ export default function ProductCard(props) {
         id: data.id,
       };
       dispatch(setProduct(product));
-      setCount(prev => prev+1)
-    }else{
+      setCount((prev) => prev + 1);
+    } else {
       dispatch(removeProduct(data.id));
       dispatch(decrementCart());
-      setCount(prev => prev-1)
-    };
-    
+      setCount((prev) => prev - 1);
+    }
+  };
+
+  const handleHover = () => {
+    setHover(true);
+  };
+
+  const removeHover = () => {
+    setHover(false);
   };
 
   return (
     <>
-      <div className="card h-100 custom-card-animation" data-aos="zoom-in" data-aos-delay="250"  data-aos-duration="500" style={{ width: "18rem" }}>
-        <p 
+      <div
+        onMouseEnter={handleHover}
+        onMouseLeave={removeHover}
+        className="card h-100 custom-card-animation"
+        data-aos="zoom-in"
+        data-aos-delay="150"
+        data-aos-duration="250"
+        style={{ width: "18rem" }}
+      >
+        <p
           className={
             "m-4 rounded-5 w-50 text-center text-white " +
             (data.availabilityStatus === "In Stock"
@@ -64,11 +80,25 @@ export default function ProductCard(props) {
         >
           {data.availabilityStatus}
         </p>
-        <img src={data.images[0]} className="card-img-top" alt="..." />
+        <div className={"card-text custom-card-info " + (!hover && "d-none")}>
+            <small>
+              {data.description}
+            </small>
+          </div>
+        <div>
+        <img src={data.images[0]} className="card-img-top" style={{width: '81%'}} />
+        </div>
         <div className="card-body">
           <div className="main-title row">
-            <h5 className="card-title col-8"><Link className="text-decoration-none text-dark" to={`/product-details/${data.id}`}>{data.title}</Link></h5>
-            <p className="col-4">
+            <h5 className="card-title col-8 mt-2">
+              <Link
+                className="text-decoration-none text-dark"
+                to={`/product-details/${data.id}`}
+              >
+                {data.title}
+              </Link>
+            </h5>
+            <p className="col-4 mt-2">
               <b>
                 <sup>$</sup>
                 {integer}
@@ -76,7 +106,7 @@ export default function ProductCard(props) {
               </b>
             </p>
           </div>
-          <small className="card-text">{data.description}</small>
+          
           <Rating rate={data.rating}></Rating>
           <button
             onClick={handleClick}

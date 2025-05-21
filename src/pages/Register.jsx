@@ -198,12 +198,12 @@ export default function Register() {
 
         {/* register button */}
       </div>
-        <div animate__animated animate__rotateIn
+        <div 
         // data-aos="flip-left"
         //       data-aos-delay="250"
         //       data-aos-duration="1500"
         //       data-aos-offset="0"
-               className="row">
+               className="row animate__animated animate__rotateIn">
 
         <button className="btn btn-success my-4 col-3 animate__animated animate__rotateIn">Register</button>
                </div>
