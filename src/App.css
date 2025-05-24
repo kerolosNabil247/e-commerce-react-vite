@@ -21,13 +21,8 @@
 }
 
 .custom-card-info{
-    position: absolute;
-    top: 14%;
-    /* height: 58%; */
-    height: 15rem;
-    background-color: #0b0b0b7a;
+    width: 100%;
+    background-color: #0b0b0b93;
     text-align: center;
     color: white;
-    padding-top: 6rem;
-    /* z-index: 2; */
 }

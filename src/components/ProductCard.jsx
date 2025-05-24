@@ -1,10 +1,9 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router";
-import '../App.css'
+import "../App.css";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../store/slices/addedProduct";
-import { decrementCart, incrementCart } from "../store/slices/cartCount";
 import { removeProduct } from "../store/slices/addedProduct.js";
 import CountOfCartContext from "../context/countCart.js";
 
@@ -30,7 +29,6 @@ export default function ProductCard(props) {
       alert("This item is out of stock");
       setIsAdded(false);
     } else if (!isAdded && data.availabilityStatus != "Out of Stock") {
-      dispatch(incrementCart());
       console.log(data.title);
       const product = {
         title: data.title,
@@ -44,7 +42,6 @@ export default function ProductCard(props) {
       setCount((prev) => prev + 1);
     } else {
       dispatch(removeProduct(data.id));
-      dispatch(decrementCart());
       setCount((prev) => prev - 1);
     }
   };
@@ -80,13 +77,25 @@ export default function ProductCard(props) {
         >
           {data.availabilityStatus}
         </p>
-        <div className={"card-text custom-card-info " + (!hover && "d-none")}>
-            <small>
-              {data.description}
-            </small>
-          </div>
+        <div
+          className={
+            "card-text text-light text-center  " + (!hover && "d-none")
+          }
+          style={{
+            position: "absolute",
+            top: "20%",
+            width: "75%",
+            left: "10%",
+          }}
+        >
+          <small>{data.description}</small>
+        </div>
         <div>
-        <img src={data.images[0]} className="card-img-top" style={{width: '81%'}} />
+          <img
+            src={data.images[0]}
+            className={"card-img-top rounded " + (hover && "custom-card-info")}
+            style={{ width: "81%" }}
+          />
         </div>
         <div className="card-body">
           <div className="main-title row">
@@ -106,7 +115,7 @@ export default function ProductCard(props) {
               </b>
             </p>
           </div>
-          
+
           <Rating rate={data.rating}></Rating>
           <button
             onClick={handleClick}

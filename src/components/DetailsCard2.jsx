@@ -2,7 +2,6 @@ import React, { useContext, useState } from "react";
 import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { removeProduct, setProduct } from "../store/slices/addedProduct";
-// import { decrementCart, incrementCart } from "../store/slices/cartCount";
 import CountOfCartContext from "../context/countCart";
 
 export default function DetailsCard2(props) {
@@ -35,20 +34,22 @@ export default function DetailsCard2(props) {
       rate: product.rating,
       id: product.id,
     };
-
-    if (!isAdded) {
-      console.log("first clicked");
-      setIsAdded(true);
-      dispatch(setProduct(productAdded));
-      console.log(dispatch(setProduct(productAdded)));
-      setCount((prev) => prev + 1);
-      // dispatch(incrementCart());
-    } else {
-      console.log("not first clicked");
-      setIsAdded(false);
-      dispatch(removeProduct(product.id));
-      setCount((prev) => prev - 1);
-      // dispatch(decrementCart());
+    if(product.availabilityStatus !== 'Out of Stock'){
+      if (!isAdded) {
+        console.log("first clicked");
+        setIsAdded(true);
+        dispatch(setProduct(productAdded));
+        console.log(dispatch(setProduct(productAdded)));
+        setCount((prev) => prev + 1);
+      } else {
+        console.log("not first clicked");
+        setIsAdded(false);
+        dispatch(removeProduct(product.id));
+        setCount((prev) => prev - 1);
+      }
+    }
+    else{
+      alert('This item is out of stock');
     }
   };
 

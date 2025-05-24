@@ -7,6 +7,7 @@ import ImagesCards from "../components/ImagesCards";
 
 export default function ProductDetails() {
   const [product, setProduct] = useState();
+  const [image, setImage] = useState();
 
   const params = useParams();
   // console.log(params.id)
@@ -22,19 +23,23 @@ export default function ProductDetails() {
   }, [params.id]);
   console.log(product);
 
+  const handleImage = (image) => {
+    setImage(image);
+  }
+
   return (
     <>
     <div className="row justify-content-center" style={{marginTop:'4rem'}}>
       <div className="col-sm-12 col-md-5 mt-3 h-100">
         <div className="row">
-        <div data-aos="zoom-in" data-aos-delay="500" className="card bg-light w-100" style={{ width: "18rem" }}>
-          <img src={product?.images[0]} className="card-img-top" alt="..." />
+        <div className="card bg-light w-100" style={{ width: "18rem" }}>
+          <img src={image? image: product?.images[0]} className="card-img-top" alt="..." />
         </div>
         </div>
         <div className="row">
           {product?.images.map((image) => (
-            <div key={crypto.randomUUID()} className="card col-4" data-aos="zoom-in" data-aos-delay="500">
-              <ImagesCards  image={image}></ImagesCards>
+            <div key={crypto.randomUUID()} className="card col-4 px-0"data-aos-delay="500">
+              <ImagesCards image={image} onClick={handleImage}></ImagesCards>
             </div>
           ))}
         </div>
