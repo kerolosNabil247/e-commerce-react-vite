@@ -10,6 +10,8 @@ export default function DetailsCard2(props) {
   const [quantity, setQuantity] = useState(1);
 
   const [isAdded, setIsAdded] = useState(false);
+  const [isCategory, setIsCategory] = useState(false);
+  const [isBrand, setIsBrand] = useState(false);
   const { _, setCount } = useContext(CountOfCartContext);
   // console.log(product);
   //   console.log(product.rating)
@@ -34,7 +36,7 @@ export default function DetailsCard2(props) {
       rate: product.rating,
       id: product.id,
     };
-    if(product.availabilityStatus !== 'Out of Stock'){
+    if (product.availabilityStatus !== "Out of Stock") {
       if (!isAdded) {
         console.log("first clicked");
         setIsAdded(true);
@@ -47,9 +49,8 @@ export default function DetailsCard2(props) {
         dispatch(removeProduct(product.id));
         setCount((prev) => prev - 1);
       }
-    }
-    else{
-      alert('This item is out of stock');
+    } else {
+      alert("This item is out of stock");
     }
   };
 
@@ -63,10 +64,12 @@ export default function DetailsCard2(props) {
       >
         <div className="row mx-3">
           <div className="row">
-            <h2 data-aos="flip-left"
+            <h2
+              data-aos="flip-left"
               data-aos-delay="1000"
               data-aos-duration="1500"
-              data-aos-offset="0">
+              data-aos-offset="0"
+            >
               <b>{product?.title}</b>
             </h2>
           </div>
@@ -86,7 +89,12 @@ export default function DetailsCard2(props) {
         </div>
         <hr />
         <div className="row mx-3">
-          <div className="row" data-aos="fade-down" data-aos-delay="1000" data-aos-duration="1500">
+          <div
+            className="row"
+            data-aos="fade-down"
+            data-aos-delay="1000"
+            data-aos-duration="1500"
+          >
             <p
               className={
                 "m-4 rounded-5  text-center text-white col-4 " +
@@ -106,25 +114,56 @@ export default function DetailsCard2(props) {
             </small>
           </div>
           <div className="row ms-1">
-            <button
+            <div
               data-aos="fade-right"
               data-aos-delay="1000"
               data-aos-duration="1500"
               data-aos-offset="0"
-              className="btn btn-light border-secondary col-5 m-1"
+              className="col-5"
             >
-              Category
-            </button>
-            <button
+              <button
+                onClick={() => setIsCategory((prev) => !prev)}
+                className={
+                  "btn col-12 m-1 " +
+                  (isCategory ? "btn-secondary" : "btn-light border-secondary")
+                }
+              >
+                Category
+              </button>
+            </div>
+            <div
+              className="col-5"
               data-aos="fade-left"
               data-aos-delay="1000"
               data-aos-duration="1500"
               data-aos-offset="0"
-              className="btn btn-light border-secondary col-5 m-1"
             >
-              Brand
-            </button>
+              <button
+                onClick={() => setIsBrand((prev) => !prev)}
+                className={
+                  "btn col-12 m-1 " +
+                  (isBrand ? "btn-secondary" : "btn-light border-secondary")
+                }
+              >
+                Brand
+              </button>
+            </div>
           </div>
+          {isCategory && (
+            <div className="row justify-content-center">
+              <p className="col-12 text-center text-secondary">
+                The category is:{" "}
+                <span className="text-dark">{product.category}</span>
+              </p>
+            </div>
+          )}
+          {isBrand && (
+            <div className="row justify-content-center">
+              <p className="col-12 text-center text-secondary">
+                The brand is: <span className="text-dark">{product.brand}</span>
+              </p>
+            </div>
+          )}
           <div className="row mt-1">
             <div className="col-5 text-white ms-3">
               <div
@@ -150,8 +189,24 @@ export default function DetailsCard2(props) {
               </div>
             </div>
             <p data-aos="fade-down" data-aos-delay="900" className="col-6">
-              only {<span className={(product?.availabilityStatus) === 'In Stock' ? "text-success" : (product?.availabilityStatus) === 'Out of Stock'? "text-danger" : "text-warning"}>{product?.stock} items</span>}{" "}
-              Left! {(product?.availabilityStatus) !== 'Out of Stock' && <span>Don't miss it</span> } 
+              only{" "}
+              {
+                <span
+                  className={
+                    product?.availabilityStatus === "In Stock"
+                      ? "text-success"
+                      : product?.availabilityStatus === "Out of Stock"
+                      ? "text-danger"
+                      : "text-warning"
+                  }
+                >
+                  {product?.stock} items
+                </span>
+              }{" "}
+              Left!{" "}
+              {product?.availabilityStatus !== "Out of Stock" && (
+                <span>Don't miss it</span>
+              )}
             </p>
           </div>
           <div className="row mb-3  ms-1">
@@ -164,22 +219,24 @@ export default function DetailsCard2(props) {
             >
               Buy Now
             </button>
-            <div data-aos="fade-left"
+            <div
+              data-aos="fade-left"
               data-aos-delay="1000"
               data-aos-duration="1500"
-              data-aos-offset="0" className="col-6">
-            <button 
-              className={
-                "rounded-5 btn col-12  " +
-                (isAdded
-                  ? "btn-secondary text-white "
-                  : "btn-light border-secondary ")
-              }
-              
-              onClick={handleAdd}
+              data-aos-offset="0"
+              className="col-6"
             >
-              Add to Cart
-            </button>
+              <button
+                className={
+                  "rounded-5 btn col-12  " +
+                  (isAdded
+                    ? "btn-secondary text-white "
+                    : "btn-light border-secondary ")
+                }
+                onClick={handleAdd}
+              >
+                Add to Cart
+              </button>
             </div>
           </div>
         </div>
