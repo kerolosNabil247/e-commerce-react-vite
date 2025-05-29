@@ -26,11 +26,11 @@ export default function Cart() {
   return (
     <div  style={{marginTop:'4rem'}}>
       <h2 className='mt-5'>Cart</h2>
-      <div className="row">
-        <p className='col-5'>Description</p>
-        <p className='col-3'>Quantity</p>
-        <p className='col-1 mx-3'>Remove</p>
-        <p className='col-1 mx-4'>price</p>
+      <div className="row d-none d-md-flex">
+        <p className='col-md-5'>Description</p>
+        <p className='col-md-3'>Quantity</p>
+        <p className='col-md-1 mx-3'>Remove</p>
+        <p className='col-md-1 mx-4'>price</p>
       </div>
       <hr />
       {products && <div className="row">

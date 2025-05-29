@@ -40,7 +40,7 @@ export default function CartCard(props) {
     <>
       <div className="row align-items-center my-3">
         {/* description */}
-        <div className="description col-5">
+        <div className="description col-sm-12 col-md-5">
           <div className="row">
             <div data-aos="fade-right"
               data-aos-delay="250"
@@ -66,7 +66,7 @@ export default function CartCard(props) {
         <div data-aos="fade-down"
               data-aos-delay="250"
               data-aos-duration="1500"
-              data-aos-offset="0" className="quantity col-3 me-2">
+              data-aos-offset="0" className="quantity col-3 me-md-2 my-4">
           <div className="row align-items-center">
             <div
               className="col-4 btn btn-success"
@@ -105,7 +105,7 @@ export default function CartCard(props) {
               data-aos-duration="1500"
               data-aos-offset="0"  className="price col-1 ">
           <div className="row align-items-center">
-            <p className="col-12 mt-2">{(price * quantity).toFixed(2)}$</p>
+            <p className="col-1 mt-2">{(price * quantity).toFixed(2)}$</p>
           </div>
         </div>
       </div>
