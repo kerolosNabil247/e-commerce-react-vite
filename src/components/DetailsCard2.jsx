@@ -3,27 +3,30 @@ import Rating from "./Rating";
 import { useDispatch } from "react-redux";
 import { removeProduct, setProduct } from "../store/slices/addedProduct";
 import CountOfCartContext from "../context/countCart";
+import ItemCount from "../context/itemCount";
 
 export default function DetailsCard2(props) {
   const { product } = props;
 
-  const [quantity, setQuantity] = useState(1);
+  // const {itemCount, setItemCount} = useContext(ItemCount)
+  // const [quantity, setQuantity] = useState(1);
 
   const [isAdded, setIsAdded] = useState(false);
   const [isCategory, setIsCategory] = useState(false);
   const [isBrand, setIsBrand] = useState(false);
   const { _, setCount } = useContext(CountOfCartContext);
-  // console.log(product);
-  //   console.log(product.rating)
-  const handlePlus = () => {
-    setQuantity((prev) => prev + 1);
-  };
 
-  const handleMinus = () => {
-    if (quantity > 1) {
-      setQuantity((prev) => prev - 1);
-    }
-  };
+  // const handlePlus = () => {
+  //   // setItemCount((prev) => prev + 1);
+  //   setQuantity((prev) => prev + 1);
+  // };
+
+  // const handleMinus = () => {
+  //   if (quantity > 1) {
+  //     // setItemCount((prev) => prev - 1);
+  //     setQuantity((prev) => prev - 1);
+  //   }
+  // };
 
   const dispatch = useDispatch();
 
@@ -164,8 +167,8 @@ export default function DetailsCard2(props) {
               </p>
             </div>
           )}
-          <div className="row mt-1">
-            <div className="col-5 text-white ms-3">
+          <div className="row mt-1 justify-content-center">
+            {/* <div className="col-5 text-white ms-3">
               <div
                 data-aos="flip-left"
                 data-aos-easing="ease-out-cubic"
@@ -187,8 +190,8 @@ export default function DetailsCard2(props) {
                   +
                 </button>
               </div>
-            </div>
-            <p data-aos="fade-down" data-aos-delay="900" className="col-6">
+            </div> */}
+            <p data-aos="fade-down" data-aos-delay="900" className="col-8">
               only{" "}
               {
                 <span
