@@ -49,6 +49,10 @@ This project is a responsive e-commerce platform built using Vite React, focusin
 * **`useState` and `useEffect`:** Used for managing local component state and side effects within individual components.
 * **Redux:** Used for global state management, specifically for handling the shopping cart (adding items, removing items, managing quantities, and preventing duplicates).
 * **React Context API:** Implemented for managing the language direction globally across the application.
+  
+## Live Website
+
+* https://e-commerce-react-vite-nu.vercel.app/
 
 
 ## Author
